@@ -27,6 +27,7 @@ Article.prototype.toHtml = function() {
 
   if (!this.publishedOn) $newArticle.addClass('draft');
   $newArticle.attr('data-category', this.category);
+  $newArticle.removeClass('template');
 
   /* TODO: Now use jQuery traversal and setter methods to fill in the rest of the current template clone with values of the properties of this particular Article instance.
     We need to fill in:
@@ -44,6 +45,7 @@ Article.prototype.toHtml = function() {
   $newArticle.find('address').html(`<a href="${this.authorUrl}">${this.author}</a>`);
   $newArticle.find('.article-body').html(this.body);
   $newArticle.append('<hr>');
+  console.log($newArticle.html());
   return $newArticle;
 };
 
@@ -54,10 +56,18 @@ rawData.sort(function(a,b) {
 
 // TODO: Refactor these for loops using the .forEach() array method.
 
-for(let i = 0; i < rawData.length; i++) {
-  articles.push(new Article(rawData[i]));
-}
+// for(let i = 0; i < rawData.length; i++) {
+//   articles.push(new Article(rawData[i]));
+// }
 
-for(let i = 0; i < articles.length; i++) {
-  $('#articles').append(articles[i].toHtml());
-}
+rawData.forEach(function(element) {
+  articles.push(new Article(element));
+});
+
+// for(let i = 0; i < articles.length; i++) {
+//   $('#articles').append(articles[i].toHtml());
+// }
+
+articles.forEach(function(element) {
+  $('#articles').append(element.toHtml());
+});
