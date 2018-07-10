@@ -1,0 +1,48 @@
+header.clearfix{
+  background-color:rgb(238, 238, 91);
+  font-weight:bold;
+  position: relative;
+  padding:10px;
+  clear: both;
+  overflow: hidden;
+}
+
+header ul{
+  display:none;
+}
+
+.icon-menu{
+  display:block;
+}
+
+nav ul{
+  clear: left;
+  list-style: none;
+  padding: 0;
+}
+
+li{
+  border-bottom: solid 1px rgb(143, 143, 143);
+}
+
+nav:hover ul{
+  display:block;
+}
+
+.template{
+  display: none;
+}
+
+@media only screen and (min-width: 640px){
+  .icon-menu{
+    display: none;
+  }
+
+  header ul{
+    display: block;
+  }
+
+  ul li{
+    display: inline-block;
+  }
+}

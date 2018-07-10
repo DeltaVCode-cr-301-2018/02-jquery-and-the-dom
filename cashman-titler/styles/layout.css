@@ -1,0 +1,18 @@
+.heading-group-h1{
+  display:inline-block;
+  float: left;
+ 
+}
+
+.icon-menu{
+  float:right;
+  padding:10px;
+}
+
+h1{
+  margin-top:0px;
+}
+
+main {
+  padding:20px;
+}
