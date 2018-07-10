@@ -10,6 +10,12 @@ let articles = [];
 function Article (rawDataObj) {
   // TODO: Use the JS object that is passed in to complete this constructor function:
   // Save ALL the properties of `rawDataObj` into `this`
+  this.title = rawDataObj.title;
+  this.category = rawDataObj.category;
+  this.author = rawDataObj.author;
+  this.authorUrl = rawDataObj.authorUrl;
+  this.publishedOn = rawDataObj.publishedOn;
+  this.body = rawDataObj.body;
 }
 
 Article.prototype.toHtml = function() {
@@ -24,14 +30,19 @@ Article.prototype.toHtml = function() {
 
   /* TODO: Now use jQuery traversal and setter methods to fill in the rest of the current template clone with values of the properties of this particular Article instance.
     We need to fill in:
-      1. author name,
-      2. author url,
-      3. article title,
-      4. article body, and
-      5. publication date. */
+     // 1. author name,
+     // 2. author url,
+     // 3. article title,
+     // 4. article body, and
+     // 5. publication date. */
 
   // REVIEW: Display the date as a relative number of 'days ago'
-  $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
+  let $time = $newArticle.find('time');
+  $time.html(`about ${parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000)} days ago`);
+  $time.attr('datetime', this.publishedOn);
+  $newArticle.find('h1').html(this.title);
+  $newArticle.find('address').html(`<a href="${this.authorUrl}">${this.author}</a>`);
+  $newArticle.find('.article-body').html(this.body);
   $newArticle.append('<hr>');
   return $newArticle;
 };
