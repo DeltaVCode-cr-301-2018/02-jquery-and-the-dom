@@ -1,0 +1,37 @@
+html, body {
+  width: 100%;
+  font-family: helvetica;
+}
+
+header {
+  background: rgb(58, 182, 106);
+  padding: 1.5%;
+}
+
+ul {
+  /* this is a hack for collapsing space between inline block elements */
+  font-size: 0;
+}
+
+li {
+  font-size: 1.5rem;
+  letter-spacing: normal;
+  list-style: none;
+  display: inline-block;
+  padding: 1%;
+  border: 2px solid black;
+  border-top-right-radius: 20%;
+  border-top-left-radius: 20%;
+}
+
+a {
+  text-decoration: none;
+  color: #71f;
+}
+
+
+
+
+
+
+
