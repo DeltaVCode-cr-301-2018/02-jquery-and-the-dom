@@ -13,7 +13,7 @@ function Article (rawDataObj) {
   this.category = rawDataObj.category;
   this.author = rawDataObj.author;
   this.authorUrl = rawDataObj.authorUrl;
-  this.publishedOn = rawDataObj.punlishedOn;
+  this.publishedOn = rawDataObj.publishedOn;
   this.body = rawDataObj.body;
 }
 
@@ -46,7 +46,8 @@ Article.prototype.toHtml = function() {
   $newArticle.find("address").text(this.author);
   $newArticle.find("a").text(this.authorUrl);
   $newArticle.find("time").text(this.publishedOn);
-  $newArticle.find("#article").text(this.body);
+  $newArticle.find(".article-body").html(this.body);
+  console.log(this.body)
   console.log('made an article');
 
   // REVIEW: Display the date as a relative number of 'days ago'
@@ -62,6 +63,10 @@ rawData.sort(function(a,b) {
 });
 
 // TODO: Refactor these for loops using the .forEach() array method.
+
+rawData.forEach(function (currentRawDataObj) {
+  articles.push(new Article(currentRawDataObj));
+});
 
 for(let i = 0; i < rawData.length; i++) {
   articles.push(new Article(rawData[i]));
